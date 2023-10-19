@@ -1,8 +1,33 @@
 import { NavLink } from "react-router-dom";
 import './Navbar.css';
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from 'sweetalert2';
 
 
 const Navbar = () => {
+
+      const { user, logOut } = useContext(AuthContext);
+      const handleLogOut = () => {
+            logOut()
+                  .then(() => {
+                        console.log('User logged out');
+                        Swal.fire(
+                              'Logout Successful!',
+                              'User logged out successfully!',
+                              'success'
+                        );
+                  })
+                  .catch(error => {
+                        console.error(error);
+                        Swal.fire({
+                              icon: 'error',
+                              title: 'Oops...',
+                              text: 'Something went wrong try again!',
+                        });
+                  });
+      };
+
 
       const links = <>
 
@@ -10,7 +35,7 @@ const Navbar = () => {
             <li className="text-[16px] font-semibold"><NavLink to="/" >Home</NavLink></li>
             <li className="text-[16px] font-semibold"><NavLink to="/addProduct" >Add product</NavLink></li >
             <li className="text-[16px] font-semibold"><NavLink to="/myCart" >My cart</NavLink></li >
-            <li className="text-[16px] font-semibold"><NavLink to="/login">Log in</NavLink></li >
+
 
 
 
@@ -48,20 +73,26 @@ const Navbar = () => {
                               </ul>
                         </div>
                         <div className="navbar-end">
-                              <ul tabIndex={0} className="menu  dropdown-content">
+                              {user && <span className="text-black mr-2 font-bold">{user.displayName
+                              }</span>}
 
-                                    <div className="flex gap-3">
-                                          <div className="avatar">
-                                                <div className="w-12 rounded-full">
-                                                      <img src="https://i.ibb.co/1sZMWyx/pexels-prasanth-inturi-1051838.jpg" />
-                                                </div>
-                                          </div>
-                                          <div className="items-center justify-center flex">
+                              {user ? <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-4">
+                                    <div className="w-10 rounded-full">
 
-                                          </div>
+
+                                          <img src={user.photoURL} />
+
+
                                     </div>
 
-                              </ul>
+                              </label> : ""}
+                              <div>
+                                    <NavLink to="/login">
+                                          {
+                                                user ? <button onClick={handleLogOut} className="btn btn-sm  bg-[#f15b43]  border-none text-white">Log out</button> : <button className="btn btn-sm  bg-[#65c9bb] border-none text-white">Log in</button>
+                                          }
+                                    </NavLink>
+                              </div>
 
                         </div>
                   </div>

@@ -10,10 +10,13 @@ import Root from './Root/Root';
 import Home from './Components/Pages/Home/Home';
 import ErrorElement from './Components/ErrorElement/ErrorElement';
 import ErrorRoute404 from './Components/ErrorRoute404/ErrorRoute404';
-import AddProduct from './Components/Pages/Footer/AddProduct/AddProduct';
+import AddProduct from './Components/Pages/AddProduct/AddProduct';
 import MyCart from './Components/Pages/MyCart/MyCart';
 import Login from './Components/Pages/Login/Login';
+import AuthProvider from './Components/Pages/Providers/AuthProvider';
 import SignUp from './Components/Pages/Login/SignUp';
+import PrivateRoutes from '../my-project/src/Routes/PrivateRoutes';
+
 
 
 
@@ -32,11 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/addProduct',
-        element: <AddProduct></AddProduct>
+        element: <PrivateRoutes><AddProduct></AddProduct></PrivateRoutes>
       },
       {
         path: '/myCart',
-        element: <MyCart></MyCart>
+        element: <PrivateRoutes> <MyCart></MyCart></PrivateRoutes>
 
       },
       {
@@ -44,7 +47,7 @@ const router = createBrowserRouter([
         element: <Login></Login>
       },
       {
-        path: 'signUp',
+        path: '/signUp',
         element: <SignUp></SignUp>
       }
     ],
@@ -59,6 +62,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 );
