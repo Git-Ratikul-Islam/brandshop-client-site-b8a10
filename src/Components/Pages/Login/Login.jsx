@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 const Login = () => {
       const { signInUser, signInWithGoogle } = useContext(AuthContext);
       const navigate = useNavigate();
+      const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?/~\\-]).*$/;
 
 
       const handleSignIn = e => {
@@ -18,6 +19,8 @@ const Login = () => {
             const password = form.password.value;
             console.log(email, password);
             signInUser(email, password)
+
+
                   .then(result => {
                         console.log(result.user);
                         Swal.fire(
@@ -30,12 +33,29 @@ const Login = () => {
                   })
                   .catch(error => {
                         console.error(error);
-                        Swal.fire({
-                              icon: 'error',
-                              title: 'Oops...',
-                              text: 'Password must contain at least one capital letter and one special character',
-                        });
-                        e.target.reset();
+                        if (!passwordRegex.test(password)) {
+                              Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Password must contain at least one capital letter and one special character',
+                              });
+                              e.target.reset();
+                              return;
+                        }
+                        else if (error.code === "auth/invalid-login-credentials") {
+                              Swal.fire({
+                                    icon: 'error',
+                                    title: 'Login Failed',
+                                    text: "Password or Email dosen't exist",
+                              });
+                        }
+                        else if (error.code === "auth/user-not-found") {
+                              Swal.fire({
+                                    icon: 'error',
+                                    title: 'Login Failed',
+                                    text: 'User with this email does not exist.',
+                              });
+                        }
                   });
 
       };
