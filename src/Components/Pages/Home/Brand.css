@@ -1,0 +1,29 @@
+.card-container {
+      transition: transform 0.2s,
+}
+
+.card-container:hover {
+      transform: translateY(-10px);
+}
+
+/* Brand.css */
+.card {
+      position: relative;
+      overflow: hidden;
+}
+
+.shine-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.5) 20%, rgba(255, 255, 255, 0.5) 50%, transparent 80%, transparent 100%);
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+      pointer-events: none;
+}
+
+.card:hover .shine-overlay {
+      transform: translateX(100%);
+}

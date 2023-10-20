@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Brands from "./Brands";
+import Featured from "./Featured";
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
 
                   {/* <Features></Features> */}
                   <Brands></Brands>
+                  <Featured></Featured>
             </>
 
       );
