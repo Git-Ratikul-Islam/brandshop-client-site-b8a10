@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Brand.css';
 
 import './Brand.css';
@@ -9,17 +10,19 @@ const Brands = () => {
                   <div className="min-h-[70vh] md:mr-0 mr-40">
 
                         <div className="grid lg:grid-cols-3 md:grid-cols-2 md:w-6/6 grid-cols-1 lg:w-4/6 mt-16 mx-auto gap-5 ">
-                              <div className="card-container">
-                                    <div className="card w-[400px] h-[270px] bg-base-100 shadow-xl image-full">
-                                          <figure>
-                                                <img className="object-cover" src="https://i.ibb.co/vjFQ336/pexels-ivan-babydov-7789851.jpg" />
-                                          </figure>
-                                          <div className="card-body">
-                                                <h2 className="card-title">Apple</h2>
+                              <Link to="/appleProducts">
+                                    <div className="card-container">
+                                          <div className="card w-[400px] h-[270px] bg-base-100 shadow-xl image-full">
+                                                <figure>
+                                                      <img className="object-cover" src="https://i.ibb.co/vjFQ336/pexels-ivan-babydov-7789851.jpg" />
+                                                </figure>
+                                                <div className="card-body">
+                                                      <h2 className="card-title">Apple</h2>
+                                                </div>
+                                                <div className="shine-overlay"></div>
                                           </div>
-                                          <div className="shine-overlay"></div>
                                     </div>
-                              </div>
+                              </Link>
                               <div className="card-container">
                                     <div className="card w-[400px] h-[270px]  bg-base-100 shadow-xl image-full">
                                           <figure>

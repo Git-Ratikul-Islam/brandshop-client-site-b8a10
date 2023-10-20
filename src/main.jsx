@@ -17,6 +17,7 @@ import AuthProvider from './Components/Pages/Providers/AuthProvider';
 import SignUp from './Components/Pages/Login/SignUp';
 import PrivateRoutes from '../my-project/src/Routes/PrivateRoutes';
 import Update from './Components/Pages/Update/Update';
+import AppleProduct from './Components/Pages/AppleProduct/AppleProduct';
 
 
 
@@ -55,6 +56,11 @@ const router = createBrowserRouter([
       {
         path: '/signUp',
         element: <SignUp></SignUp>
+      },
+      {
+        path: '/appleProducts',
+        element: <AppleProduct></AppleProduct>,
+        loader: () => fetch("http://localhost:5000/product")
       }
     ],
   },
