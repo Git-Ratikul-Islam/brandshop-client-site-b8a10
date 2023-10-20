@@ -6,9 +6,9 @@ const Brands = () => {
       return (
             <>
                   <h1 className='text-5xl text-center mt-4'> Our Brands</h1>
-                  <div className="min-h-[70vh]">
+                  <div className="min-h-[70vh] md:mr-0 mr-40">
 
-                        <div className="grid md:grid-cols-3 grid-cols-1 w-4/6 mt-16 mx-auto gap-5">
+                        <div className="grid lg:grid-cols-3 md:grid-cols-2 md:w-6/6 grid-cols-1 lg:w-4/6 mt-16 mx-auto gap-5 ">
                               <div className="card-container">
                                     <div className="card w-[400px] h-[270px] bg-base-100 shadow-xl image-full">
                                           <figure>
