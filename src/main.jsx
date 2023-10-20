@@ -58,9 +58,13 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>
       },
       {
-        path: '/appleProducts',
-        element: <AppleProduct></AppleProduct>,
+        path: '/productsAll',
+        element: <PrivateRoutes><AppleProduct></AppleProduct></PrivateRoutes>,
         loader: () => fetch("http://localhost:5000/product")
+      },
+      {
+        path: '/details',
+
       }
     ],
   },
