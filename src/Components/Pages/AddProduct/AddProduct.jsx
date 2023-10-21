@@ -17,7 +17,7 @@ const AddProduct = () => {
 
 
             // send data to the server 
-            fetch('http://localhost:5000/product', {
+            fetch('https://pulsetech-ass-10-server-kkip2ksre-ratikul-islams-projects.vercel.app/product', {
                   method: "POST",
                   headers: {
                         'content-type': 'application/json'

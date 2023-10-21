@@ -60,7 +60,7 @@ const router = createBrowserRouter([
       {
         path: '/productsAll',
         element: <PrivateRoutes><AppleProduct></AppleProduct></PrivateRoutes>,
-        loader: () => fetch("http://localhost:5000/product")
+        loader: () => fetch("https://pulsetech-ass-10-server-kkip2ksre-ratikul-islams-projects.vercel.app/product")
       },
       {
         path: '/details',
